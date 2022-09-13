@@ -10,7 +10,6 @@ const server = async () => {
     dotenv.config();
 
     const app = express();
-    app.use("uploads/products", express.static("../public/uploads/products"))
     await authenticate(connection);
     await sync(connection);
 
@@ -21,6 +20,7 @@ const server = async () => {
     app.listen(process.env.SERVER_PORT, () => {
       console.log("Server listen on port: ", process.env.SERVER_PORT);
     });
+
   } catch (error) {
     console.log("Error: ", error.message);
     console.log("Server Error: ", error);

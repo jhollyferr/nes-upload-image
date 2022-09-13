@@ -7,11 +7,11 @@ dotenv.config();
 
 const storage = multer.diskStorage({
   destination: (request, file, callback) =>
-    callback(null, process.env.DIR_PRODUCT_IMAGE_UPLOAD),
+    callback(null, process.env.DIR_PRODUCT_IMAGES_UPLOAD),
   filename: (request, file, callback) => {
     var temp_file_arr = file.originalname.split(".");
 
-    var temp_file_name = temp_file_arr[0];
+    // var temp_file_name = temp_file_arr[0];
 
     var temp_file_extension = temp_file_arr[1];
 

@@ -17,7 +17,7 @@ class ProductController {
   async create(request, response) {
     try {
       const { name, price } = request.body;
-      const { path } = request.file;
+      const { path, filename } = request.file;
 
       if (!path) throw new Error("Image not found");
 
@@ -27,7 +27,7 @@ class ProductController {
       const product = await ProductModel.create({
         name,
         price,
-        image: path,
+        image: filename,
       });
 
       return response.status(201).json({product});
