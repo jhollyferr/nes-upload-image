@@ -19,10 +19,9 @@ class ProductController {
       const { name, price } = request.body;
       const { path, filename } = request.file;
 
-      if (!path) throw new Error("Image not found");
+      if (!path) throw new Error("Please you must add an image");
 
-      if ([name, price].includes(""))
-        throw new Error("Name or Price not found");
+      if ([name, price].includes("")) throw new Error("There are empty fields");
 
       const product = await ProductModel.create({
         name,
@@ -30,8 +29,7 @@ class ProductController {
         image: filename,
       });
 
-      return response.status(201).json({product});
-   
+      return response.status(201).json({ product });
     } catch (error) {
       return response.status(500).json({
         message: "Erro ao criar produto",
